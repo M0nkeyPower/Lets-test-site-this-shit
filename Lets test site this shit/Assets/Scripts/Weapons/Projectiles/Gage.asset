@@ -16,7 +16,7 @@ MonoBehaviour:
   mass: 2
   speedMultiplier: 1
   stumblePower: 5
-  destroyDelay: 0.5
+  destroyDelayMultiplier: 1
   mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: 4c456ab2249ec6d43ab27f77aed1deb7, type: 2}
   scaleX: 0.5

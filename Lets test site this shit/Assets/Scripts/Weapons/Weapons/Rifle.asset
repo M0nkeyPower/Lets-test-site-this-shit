@@ -20,7 +20,7 @@ MonoBehaviour:
   damage: 10
   projectileSpeed: 80
   stumblePower: 5
-  destroyDelay: 0.4
+  destroyDelay: 0.5
   mesh: {fileID: 4300010, guid: f69bae513cfb0874a9c44051e23e59e0, type: 3}
   fireType: 0
   alternateFire: 0

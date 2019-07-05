@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Must be present on a character in order to use weapons
+/// Represents weapon set of a character
 /// Gets a weapon (type of scriptaple object) and sets values acordingly
 /// handles firing and weapon switching
 /// </summary>
@@ -150,6 +152,7 @@ public class WeaponGeneral : MonoBehaviour {
 
 	private void createProjectile()
 	{
+		//creating a new projectile
 		projectile = new GameObject ();
 		projectile.transform.position = transform.position + (transform.forward * 2);
 		projectile.transform.rotation = transform.rotation;
@@ -178,7 +181,15 @@ public class WeaponGeneral : MonoBehaviour {
 
 		//add projectileGeneral script for behaviour
 		projectile.AddComponent<ProjectileGeneral>();
-		projectile.GetComponent<ProjectileGeneral> ().setValues (weapons[currentWeapon].damage + weapons[currentWeapon].projectiles[currentProjectile].damage, weapons[currentWeapon].projectiles[currentProjectile].mass, weapons[currentWeapon].projectileSpeed * weapons[currentWeapon].projectiles[currentProjectile].speedMultiplier, rb.velocity, weapons[currentWeapon].stumblePower + weapons[currentWeapon].projectiles[currentProjectile].stumblePower, weapons[currentWeapon].destroyDelay + weapons[currentWeapon].projectiles[currentProjectile].destroyDelay);
+	
+		float damage = weapons [currentWeapon].damage + weapons [currentWeapon].projectiles [currentProjectile].damage;
+		float mass =  weapons[currentWeapon].projectiles[currentProjectile].mass;
+		float projectileSpeed = weapons[currentWeapon].projectileSpeed * weapons[currentWeapon].projectiles[currentProjectile].speedMultiplier;
+		Vector3 initialVelocity = rb.velocity;
+		float stumblePower = weapons[currentWeapon].stumblePower + weapons[currentWeapon].projectiles[currentProjectile].stumblePower;
+		float destroyDelay = weapons[currentWeapon].destroyDelay + weapons[currentWeapon].projectiles[currentProjectile].destroyDelayMultiplier;
+
+		projectile.GetComponent<ProjectileGeneral> ().setValues (damage, mass, projectileSpeed, initialVelocity, stumblePower, destroyDelay);
 		projectile.transform.Rotate(Vector3.up,Random.Range (accuracy/weapons[currentWeapon].divisionFactor, -accuracy/weapons[currentWeapon].divisionFactor));
 		projectile.GetComponent<ProjectileGeneral> ().fire ();
 	

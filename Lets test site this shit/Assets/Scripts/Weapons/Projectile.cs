@@ -12,7 +12,7 @@ public class Projectile : ScriptableObject {
 	public float mass;
 	public float speedMultiplier;
 	public float stumblePower;
-	public float destroyDelay;
+	public float destroyDelayMultiplier;
 	public Mesh mesh;
 	public Material material;
 	public float scaleX;
