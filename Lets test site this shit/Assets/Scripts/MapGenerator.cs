@@ -24,7 +24,7 @@ public class MapGenerator : MonoBehaviour {
 	public float percentage;
 	public int cycles;
 	List<GameObject> tiles;
-	List<GameObject> spawnPoints;
+	public List<GameObject> spawnPoints;
 
 	// Use this for initialization
 	void Start () 
@@ -116,13 +116,15 @@ public class MapGenerator : MonoBehaviour {
 			
 
 		spawnPlayer ();
+		try
+		{
+			FindObjectOfType<WaveSpawner> ().setSpawnPoints (spawnPoints);
+		}
+		catch
+		{
+			Debug.Log ("Could not assign enemy spawn point, probably due to missing WaveSpawner.cs.");
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 
 	public int getNeighbourTilesValue(int x, int y)
 	{
@@ -172,6 +174,8 @@ public class MapGenerator : MonoBehaviour {
 		}
 			
 	}
+
+
 
 
 

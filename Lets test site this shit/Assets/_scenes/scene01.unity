@@ -124,7 +124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &102704643
 Transform:
   m_ObjectHideFlags: 0
@@ -158,13 +158,9 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 1887725265835234, guid: b520e01a9ec0ece4fb72f58e2102291a, type: 2}
   - {fileID: 1542031885626308, guid: 85af9290cd7513645bb89308cf311b2a, type: 2}
-  spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   currentWaveUI: {fileID: 117259449}
   enemiesRemainingUI: {fileID: 357326755}
+  distanceThreshold: 10
 --- !u!132 &102704645
 GUIText:
   m_ObjectHideFlags: 0
@@ -398,6 +394,7 @@ MonoBehaviour:
     type: 2}
   percentage: 45
   cycles: 2
+  spawnPoints: []
 --- !u!4 &279538151
 Transform:
   m_ObjectHideFlags: 0

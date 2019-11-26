@@ -14,11 +14,11 @@ MonoBehaviour:
   weaponName: Shotgun
   fireRate: 1
   magazineCapacity: 12
-  projectilesPerShot: 8
+  projectilesPerShot: 50
   accuracy: 50
   divisionFactor: 5
   damage: 30
-  projectileSpeed: 50
+  projectileSpeed: 40
   stumblePower: 3
   destroyDelay: 0.75
   mesh: {fileID: 4300010, guid: f69bae513cfb0874a9c44051e23e59e0, type: 3}

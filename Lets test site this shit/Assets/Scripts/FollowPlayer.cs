@@ -7,17 +7,20 @@ public class FollowPlayer : MonoBehaviour {
 
 
 	Transform player = null;
-    public Transform hrac;
+	float distanceThreshold;
     NavMeshAgent nav;
+	NavMeshPath path;
 
 	// Use this for initialization
 	void Start ()
     {
         nav = GetComponent<NavMeshAgent>();
+		path = new NavMeshPath ();
 		if (GameObject.FindGameObjectWithTag ("Player") != null) 
 		{
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
+		distanceThreshold = FindObjectOfType<WaveSpawner> ().getDistanceThreshold ();
       
 
 	}
@@ -27,7 +30,12 @@ public class FollowPlayer : MonoBehaviour {
     {
 		if (player != null) 
 		{
-			nav.SetDestination(player.position);
+			if ( (Vector3.Distance (nav.destination, player.transform.position) > distanceThreshold) && (Vector3.Distance(this.transform.position,player.position) > distanceThreshold) )
+			{
+				nav.CalculatePath (player.position, path);
+				nav.SetPath(path);							
+			}
+
 		}
       
 	}

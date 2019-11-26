@@ -22,11 +22,12 @@ public class WaveSpawner : MonoBehaviour {
 	//private int remainingEnemies;
     public List<GameObject> enemyPrefabs = new List<GameObject>();
 	private List<GameObject> enemies = new List<GameObject>();
-    public List<Transform> spawnPoints = new List<Transform>();
+	List<GameObject> spawnPoints;
 
 
 	public Text currentWaveUI;
 	public Text enemiesRemainingUI;
+	public float distanceThreshold;
 
 
     // Use this for initialization
@@ -34,6 +35,8 @@ public class WaveSpawner : MonoBehaviour {
     {
 		currentWave = 0;
 		waveSpawned = true;
+		//Assign spawnpoints here!!!
+		//spawnPoints = FindObjectOfType<MapGenerator>().getSpawnPoints();
     }
 
     // Update is called once per frame
@@ -69,7 +72,8 @@ public class WaveSpawner : MonoBehaviour {
 			{
 				if (y < amountOfUpcomingEnemies) 
 				{
-					GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0,2)], spawnPoints[Random.Range(0, 4)]);
+					//Rework this section!!!
+					GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0,2)], spawnPoints[Random.Range(0, spawnPoints.Count - 1)].gameObject.transform);
 					enemies.Add (enemy);
 					y += 1;
 				}
@@ -94,6 +98,17 @@ public class WaveSpawner : MonoBehaviour {
 
 
 		enemiesRemainingUI.text ="Enemies: " + enemies.Count + "/" + amountOfUpcomingEnemies;
+	}
+
+
+	public void setSpawnPoints(List<GameObject> spawnPoints)
+	{
+		this.spawnPoints = spawnPoints;
+	}
+
+	public float getDistanceThreshold()
+	{
+		return distanceThreshold;
 	}
    
 }
